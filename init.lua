@@ -10,7 +10,6 @@ vim.cmd("set relativenumber")
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
-vim.cmd("colorscheme blue")
 
 -- Keymaps for window navigation
 --  See `:help wincmd` for a list of all window commands
@@ -43,6 +42,9 @@ vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
 -- Install plugins
 require("lazy").setup("plugins")
 
+-- Set completion
+vim.cmd("colorscheme lunaperche")
+
 -- Avoid showing extra messages when using completion
 vim.opt.shortmess = vim.opt.shortmess + "c"
 
@@ -74,4 +76,8 @@ vim.g.rustaceanvim = {
   },
 }
 
-
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
